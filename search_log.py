@@ -13,17 +13,6 @@ def search_wildcard(list_wildcards, path):
     return list_files
 
 
-# def get_list_of_string(list_files):
-#     dict_line = {}
-#     number_line = 0
-#     for file in list_files:
-#         file_path = os.path.join(path, file)
-#         data = open(file_path, 'r')
-#         for line in data:
-#             number_line += 1
-#             dict_line('number_line') =    return dict_line
-
-
 def search_by_ID(list_files, id_pattern):
     list_index = []
     number_line = 0
