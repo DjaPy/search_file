@@ -9,7 +9,8 @@ def search_wildcard(list_wildcards, path):
     for wildcard in list_wildcards:
         for file in os.listdir(path):
             if fnmatch.fnmatch(file, wildcard):
-                list_files.append(file)
+                if file not in list_files:
+                    list_files.append(file)
     return list_files
 
 
@@ -51,7 +52,7 @@ if __name__ == '__main__':
     id_pattern = input('Введите идентификатор лога: ')
     path_write = input('Введите путь для записи файла: ')
     filename = os.path.join(path_write, id_pattern + '.txt')
-    # print(search_wildcard(list_wildcards, path))
+    print(search_wildcard(list_wildcards, path))
 
     list_files = search_wildcard(list_wildcards, path)
     # print(search_by_ID(list_files, id_pattern))
@@ -59,6 +60,3 @@ if __name__ == '__main__':
     list_index, list_line = search_by_ID(list_files, id_pattern)
     list_slice_of_line = to_range_of_lines(list_index, list_line)
     writing_to_file(list_slice_of_line)
-
-
-
