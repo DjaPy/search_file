@@ -48,7 +48,8 @@ def writing_to_file(list_slice_of_line):
 
 if __name__ == '__main__':
     path = input('Введите путь к каталогу для поиска: ')
-    list_wildcards = [wildcard_file for wildcard_file in input('Введите маску файла(ов) через проблел: ').split()]
+    list_wildcards = [wildcard_file for wildcard_file in
+                      input('Введите маску файла(ов) через пробел: ').split()]
     id_pattern = input('Введите идентификатор лога: ')
     path_write = input('Введите путь для записи файла: ')
     filename = os.path.join(path_write, id_pattern + '.txt')
