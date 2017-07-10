@@ -9,7 +9,7 @@ def get_parser_of_command_line():
                             'search by mask and ID in the logs')
     parser.add_argument('path_for_search',
                         help='Directory path', type=str)
-    parser.add_argument('-w', '--wildcard', nargs='?', action= 'append',
+    parser.add_argument('-w', '--wildcard', nargs='?', action='append',
                         help='Wildcard for search log', default=None,
                         type=str)
     parser.add_argument('-i', '--id', nargs='?',
@@ -17,7 +17,7 @@ def get_parser_of_command_line():
                         type=str)
     parser.add_argument('-o', '--output', nargs='?',
                         help='The path to write the file with the search results',
-                        default=None, Type=str)
+                        default=None, type=str)
     return parser.parse_args()
 
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     # path_write = input('Введите путь для записи файла: ')
     search_settings = get_parser_of_command_line()
     path = search_settings.path_for_search
-    list_wildcards = [wildcard for wildcard in search_settings.wildcard.split()]
+    list_wildcards = [wildcard for wildcard in search_settings.wildcard]
     id_pattern = search_settings.id
     path_write = search_settings.output
     filename = os.path.join(path_write, id_pattern + '.txt')
@@ -89,4 +89,4 @@ if __name__ == '__main__':
 
     list_index, list_line = search_by_ID(list_files, id_pattern)
     list_slice_of_line = to_range_of_lines(list_index, list_line)
-    writing_to_file(list_slice_of_line)
+    writing_to_file(list_slice_of_line, filename)
